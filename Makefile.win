@@ -1,0 +1,40 @@
+# Project: Project1
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = MAIN.o INIT.o VARIABLES.o KEY_MOUSE.o MOVE.o
+LINKOBJ  = MAIN.o INIT.o VARIABLES.o KEY_MOUSE.o MOVE.o
+LIBS     = -L"C:/Users/Nick/Desktop/Desktop Files/Programming Stuff/C++/Coding programs/Dev-Cpp/MinGW32/lib" -L"C:/Users/Nick/Desktop/Desktop Files/Programming Stuff/C++/Coding programs/Dev-Cpp/MinGW32/mingw32/lib" -static-libstdc++ -static-libgcc -lglut32 -lglu32 -lopengl32 -lwinmm -lgdi32 -lopengl32 -lmingw32 -g3
+INCS     = -I"C:/Users/Nick/Desktop/Desktop Files/Programming Stuff/C++/Coding programs/Dev-Cpp/MinGW32/include" -I"C:/Users/Nick/Desktop/Desktop Files/Programming Stuff/C++/Coding programs/Dev-Cpp/MinGW32/lib/gcc/mingw32/4.7.2/include"
+CXXINCS  = -I"C:/Users/Nick/Desktop/Desktop Files/Programming Stuff/C++/Coding programs/Dev-Cpp/MinGW32/include" -I"C:/Users/Nick/Desktop/Desktop Files/Programming Stuff/C++/Coding programs/Dev-Cpp/MinGW32/lib/gcc/mingw32/4.7.2/include" -I"C:/Users/Nick/Desktop/Desktop Files/Programming Stuff/C++/Coding programs/Dev-Cpp/MinGW32/lib/gcc/mingw32/4.7.2/include/c++"
+BIN      = Project1.exe
+CXXFLAGS = $(CXXINCS) -std=gnu++11 -g3
+CFLAGS   = $(INCS) -std=gnu++11 -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+MAIN.o: MAIN.cpp
+	$(CPP) -c MAIN.cpp -o MAIN.o $(CXXFLAGS)
+
+INIT.o: INIT.cpp
+	$(CPP) -c INIT.cpp -o INIT.o $(CXXFLAGS)
+
+VARIABLES.o: VARIABLES.cpp
+	$(CPP) -c VARIABLES.cpp -o VARIABLES.o $(CXXFLAGS)
+
+KEY_MOUSE.o: KEY_MOUSE.cpp
+	$(CPP) -c KEY_MOUSE.cpp -o KEY_MOUSE.o $(CXXFLAGS)
+
+MOVE.o: MOVE.cpp
+	$(CPP) -c MOVE.cpp -o MOVE.o $(CXXFLAGS)
